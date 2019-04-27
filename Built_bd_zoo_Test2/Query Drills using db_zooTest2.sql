@@ -31,7 +31,14 @@ Compose a SELECT statement that queries for the following information:
 
 ➤ Retrieve all species_names with the nutrition_id between 2202 and 2206 from the nutrition table.
 */
-SELECT species_name FROM tbl_species WHERE species_nutrition BETWEEN 2202 AND 2206;
+SELECT species_name FROM tbl_species WHERE species_nutrition BETWEEN 2202 AND 2206; /*This is the  incorrect answer because it doesn't retrieve the data from the tbl_nutrition table as instucted*/
+
+/*This one is the correct a answer. It retrieves the same info as the line above, but instead of retrieving the data from the tbl_species table, it retrieves it from the tbl_nutrition table as instructed.*/
+SELECT a.species_name
+FROM tbl_species a 
+INNER JOIN tbl_nutrition b ON a.species_nutrition = b.nutrition_id 
+WHERE b.nutrition_id BETWEEN 2202 AND 2206
+ORDER BY b.nutrition_id;
 
 /*
 DRILL 5:
